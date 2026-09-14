@@ -21,15 +21,31 @@
 
 不适用于自动规划整个多步工作流、批量读取 Excel 或直接提交 API 生成。复合任务的顺序仍由用户或上层工作流程决定。
 
-## 输入要求
+## 严格输入格式
 
 - 提供与任务相关的模特图、平铺图、背面图或身份参考图。
 - 图像应足够清晰，便于判断人物身份、服装轮廓、颜色、材质、细节、动作和构图。
-- Figure 1、Figure 2 及后续图片的顺序是位置合同，必须按选中条目的 `References` 顺序传入。
+- Figure 1、Figure 2 及后续图片的顺序是位置合同，必须按选中条目的 `References` 顺序传入；不能根据文件名或上传时间重新排序。
 - 模板中的颜色、服装、配饰、背景和动作只是示例；必须按可见证据改写。
 - 没有匹配条目时，只有在用户要求下才可依据同样原则撰写新的简短单步提示词。
 
 此 Skill 不规定固定图片格式、像素尺寸或目录结构；实际限制由所用的图像模型与上层流程决定。
+
+### 各任务的参考图顺序
+
+| Task ID | Figure 顺序 |
+| --- | --- |
+| `missing-side-view` | Figure 1：正面或接近正面的模特图 |
+| `missing-front-view` | Figure 1：其他角度但产品已经准确的模特图 |
+| `missing-back-view` | Figure 1：正面或接近正面的产品准确模特图；Figure 2：商品背面图 |
+| `missing-back-view-gpt-simple` / `missing-back-view-gemini-simple` | Figure 1：产品准确的正面模特图；Figure 2：正面平铺图；Figure 3：背面平铺图 |
+| `adding-pose` / `adding-pose-arms-down` | Figure 1：需要更改动作的模特图 |
+| `product-wear` | Figure 1：模特图；Figure 2：与模特可见服装面对应的正确商品图 |
+| `change-color` | Figure 1：待换色模特图；Figure 2：同款、正确颜色且可见面匹配的商品图 |
+| `same-person` | Figure 1：需要保留动作和构图的目标图；Figure 2：身份参考模特图 |
+| `remove-arm-tattoo` | Figure 1：包含手臂纹身的模特图 |
+
+`missing-back-view` 的两图合同与 processor compatibility 的三图合同不能混用；必须先根据调用方工作流选择对应 Task ID。完整提示词和输出角色见 [references/prompt-catalog.md](references/prompt-catalog.md)。
 
 ## 环境与依赖
 
