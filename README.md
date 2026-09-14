@@ -10,7 +10,7 @@
 | 类型 | 显式调用的 Codex 参考 Skill |
 | 创建时间 | 2026-09-10（源目录时间） |
 | 公开发布整理 | 2026-09-14 |
-| 版本 | 未单独标记语义版本，以 Git 提交为准 |
+| 版本 | `2026.09.14` |
 | 入口 | [SKILL.md](SKILL.md) |
 | 提示词目录 | [references/prompt-catalog.md](references/prompt-catalog.md) |
 | 状态 | 可用，默认禁止隐式调用 |
