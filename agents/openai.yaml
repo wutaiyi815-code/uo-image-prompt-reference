@@ -1,0 +1,7 @@
+interface:
+  display_name: "UO 生图提示词参考"
+  short_description: "仅在明确调用时使用的服装模特生图提示词与参考图规则"
+  default_prompt: "使用 $uo-image-prompt-reference 为当前服装模特生图任务选择参考图并撰写单步提示词。"
+
+policy:
+  allow_implicit_invocation: false
