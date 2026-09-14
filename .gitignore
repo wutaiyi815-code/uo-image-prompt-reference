@@ -1,0 +1,6 @@
+__pycache__/
+*.py[cod]
+*.bak*
+.env
+.env.*
+!.env.example
